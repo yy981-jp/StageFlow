@@ -1,0 +1,25 @@
+{
+  "name": "stageflow",
+  "displayName": "StageFlow",
+  "description": "",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.108.1"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "contributes": {
+    "languages": [{
+      "id": "stageflow",
+      "aliases": ["StageFlow", "stageflow"],
+      "extensions": [".stg"],
+      "configuration": "./language-configuration.json"
+    }],
+    "grammars": [{
+      "language": "stageflow",
+      "scopeName": "source.stg",
+      "path": "./syntaxes/stageflow.tmLanguage.json"
+    }]
+  }
+}
