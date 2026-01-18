@@ -1,32 +1,99 @@
 {
-	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
-	"name": "StageFlow",
+  "name": "StageFlow",
+  "scopeName": "source.stg",
+  "patterns": [
+    { "include": "#comments" },
+    { "include": "#labels" },
+    { "include": "#labelReferences" },
+    { "include": "#keywords" },
+    { "include": "#enemyTypes" },
+    { "include": "#parameters" },
+    { "include": "#numbers" },
+    { "include": "#strings" },
+    { "include": "#booleans" }
+  ],
+  "repository": {
+		"comments": {
+		"patterns": [
+			{
+			"name": "comment.line.double-slash.stg",
+			"match": "//.*$"
+			},
+			{
+			"name": "comment.block.stg",
+			"begin": "/\\*\\*?",
+			"end": "\\*/"
+			}
+		  ]
+		},
+    "labels": {
+      "patterns": [
+        {
+          "name": "entity.name.label.stg",
+          "match": "^:[A-Za-z_][A-Za-z0-9_]*"
+        }
+      ]
+    },
+	"labelReferences": {
 	"patterns": [
 		{
-			"include": "#keywords"
-		},
-		{
-			"include": "#strings"
+		"name": "entity.name.label.stg",
+		"match": "(?<=\\bcall\\s+)[A-Za-z_][A-Za-z0-9_]*"
 		}
-	],
-	"repository": {
-		"keywords": {
-			"patterns": [{
-				"name": "keyword.control.stageflow",
-				"match": "\\b(if|while|for|return)\\b"
-			}]
-		},
-		"strings": {
-			"name": "string.quoted.double.stageflow",
-			"begin": "\"",
-			"end": "\"",
-			"patterns": [
-				{
-					"name": "constant.character.escape.stageflow",
-					"match": "\\\\."
-				}
-			]
-		}
+	]
 	},
-	"scopeName": "source.stg"
+    "keywords": {
+      "patterns": [
+        {
+          "name": "keyword.control.stg",
+          "match": "\\b(spawn|wait|waitUntil|repeat|end|call)\\b"
+        }
+      ]
+    },
+
+    "enemyTypes": {
+      "patterns": [
+        {
+          "name": "entity.name.type.enemy.stg",
+          "match": "(?<=\\bspawn\\s+)[A-Za-z_][A-Za-z0-9_]*"
+        }
+      ]
+    },
+
+    "parameters": {
+      "patterns": [
+        {
+          "name": "variable.parameter.stg",
+          "match": "\\b[A-Za-z_][A-Za-z0-9_]*(?=\\s*=)"
+        }
+      ]
+    },
+
+    "numbers": {
+      "patterns": [
+        {
+          "name": "constant.numeric.stg",
+          "match": "\\b\\d+(\\.\\d+)?(ms|s)?\\b"
+        }
+      ]
+    },
+
+    "strings": {
+      "patterns": [
+        {
+          "name": "string.quoted.double.stg",
+          "match": "\"([^\"\\\\]|\\\\.)*\""
+        }
+      ]
+    },
+
+    "booleans": {
+      "patterns": [
+        {
+          "name": "constant.language.boolean.stg",
+          "match": "\\b(true|false)\\b"
+        }
+      ]
+    }
+  }
 }
