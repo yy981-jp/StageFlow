@@ -46,7 +46,7 @@
       "patterns": [
         {
           "name": "keyword.control.stg",
-          "match": "\\b(spawn|wait|waitUntil|repeat|end|call)\\b"
+          "match": "\\b(spawn|wait|waitUntil|repeat|repeatUntil|end|call)\\b"
         }
       ]
     },
